@@ -1,0 +1,37 @@
+# Spring Boot configuration
+spring:
+  application:
+    name:sme-portal-service
+  profiles:
+    active: production
+# Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/msmeportal?createDatabaseIfNotExist=true
+    username: postgres
+    password: developer
+# JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: false
+# Logger configuration
+logging:
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+  level:
+    org.springframework: INFO
+    org.hibernate: INFO
+# Server configuration
+server:
+  port: 8090
+  sessionTimeout: 30
+# Security configuration
+#security:
+ # user:
+  #  name: user
+   # password: user

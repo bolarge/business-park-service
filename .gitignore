@@ -1,13 +1,31 @@
-target/*
-.settings/*
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
 .classpath
+.factorypath
 .project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
 .idea
+*.iws
 *.iml
-/target
+*.ipr
 
-generated/
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
 
-# Easier branch switching
-springboot-petclinic-client/
-springboot-petclinic-server/
+### VS Code ###
+.vscode/
