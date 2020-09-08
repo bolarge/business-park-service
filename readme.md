@@ -1,45 +1,36 @@
-# REST version of Spring PetClinic Sample Application (spring-framework-petclinic extend ) [![Build Status](https://travis-ci.org/spring-petclinic/spring-petclinic-rest.png?branch=master)](https://travis-ci.org/spring-petclinic/spring-petclinic-rest/)
+# Business Park REST API
 
-This backend version of the Spring Petclinic application only provides a REST API. **There is no UI**.
-The [spring-petclinic-angular project](https://github.com/spring-petclinic/spring-petclinic-angular) is a Angular front-end application witch consumes the REST API.
+## Business Park is an aggregation, services provisioning and general business administration for micro, medium and small enterprises. It handles
+##all related paperwork required to setup a business legally, provides services that support development and growth of businesses, provisions businesses
+##into their various development and growth programmes, facilitates establishments of passage channels and network linkages that promotes visibility
+##to these businesses.
 
-## Understanding the Spring Petclinic application with a few diagrams
 
-[See the presentation of the Spring Petclinic Framework version](http://fr.slideshare.net/AntoineRey/spring-framework-petclinic-sample-application)
+## Running Business Park locally
 
-## Running petclinic locally
-
-### With maven command line
+### With maven command line https://github.com/bolarge/sme-portal-service.git
 ```
-git clone https://github.com/spring-petclinic/spring-petclinic-rest.git
-cd spring-petclinic-rest
+git clone https://github.com/sme-portal-service/sme-portal-service.git
+cd sme-portal-service
 ./mvnw spring-boot:run
 ```
 
 ### With Docker
 ```
-docker run -p 9966:9966 springcommunity/spring-petclinic-rest
+docker run -p 9966:9966 bolarge/sme-portal-service
 ```
 
-You can then access petclinic here: [http://localhost:9966/petclinic/](http://localhost:9966/petclinic/)
+You can then access sme-portal-service here: [http://localhost:9966/sme-portal-service/](http://localhost:9966/sme-portal-service/)
 
 ## Swagger REST API documentation presented here (after application start):
-[http://localhost:9966/petclinic/swagger-ui.html](http://localhost:9966/petclinic/swagger-ui.html)
-
-## Screenshot of the Angular client
-
-<img width="1427" alt="spring-petclinic-angular2" src="https://cloud.githubusercontent.com/assets/838318/23263243/f4509c4a-f9dd-11e6-951b-69d0ef72d8bd.png">
-
-## In case you find a bug/suggested improvement for Spring Petclinic
-Our issue tracker is available here: https://github.com/spring-petclinic/spring-petclinic-rest/issues
-
+[http://localhost:9966/sme-portal-service/swagger-ui.html](http://localhost:9966/sme-portal-service/swagger-ui.html)
 
 ## Database configuration
 
-In its default configuration, Petclinic uses an in-memory database (HSQLDB) which
+In its default configuration, sme-portal-service uses an in-memory database (HSQLDB) which
 gets populated at startup with data.
 A similar setups is provided for MySql and PostgreSQL in case a persistent database configuration is needed.
-To run petclinic locally using persistent database, it is needed to change profile defined in application.properties file.
+To run sme-portal-service locally using persistent database, it is needed to change profile defined in application.properties file.
 
 For MySQL database, it is needed to change param "hsqldb" to "mysql" in string
 ```
@@ -50,9 +41,9 @@ spring.profiles.active=hsqldb,spring-data-jpa
 Before do this, would be good to check properties defined in application-mysql.properties file.
 
 ```
-spring.datasource.url = jdbc:mysql://localhost:3306/petclinic?useUnicode=true
-spring.datasource.username=pc
-spring.datasource.password=petclinic 
+spring.datasource.url = jdbc:mysql://localhost:3306/sme-portal-service?useUnicode=true
+spring.datasource.username=sme-portal-service
+spring.datasource.password=sme-portal-service 
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver 
 spring.jpa.database=MYSQL
 spring.jpa.database-platform=org.hibernate.dialect.MySQLDialect
@@ -74,9 +65,9 @@ spring.profiles.active=hsqldb,spring-data-jpa
 Before do this, would be good to check properties defined in application-postgresql.properties file.
 
 ```
-spring.datasource.url=jdbc:postgresql://localhost:5432/petclinic
+spring.datasource.url=jdbc:postgresql://localhost:5432/sme-portal-service
 spring.datasource.username=postgres
-spring.datasource.password=petclinic
+spring.datasource.password=sme-portal-service
 spring.datasource.driver-class-name=org.postgresql.Driver
 spring.jpa.database=POSTGRESQL
 spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
@@ -85,11 +76,11 @@ spring.jpa.hibernate.ddl-auto=none
 You may also start a Postgres database with docker:
 
 ```
-docker run --name postgres-petclinic -e POSTGRES_PASSWORD=petclinic -e POSTGRES_DB=petclinic -p 5432:5432 -d postgres:9.6.0
+docker run --name postgres-sme-portal-service -e POSTGRES_PASSWORD=sme-portal-service -e POSTGRES_DB=petclinic -p 5432:5432 -d postgres:9.6.0
 ```
 
 ## Security configuration
-In its default configuration, Petclinic doesn't have authentication and authorization enabled.
+In its default configuration, sme-portal-service doesn't have authentication and authorization enabled.
 
 ### Basic Authentication
 In order to use the basic authentication functionality, turn in on from the application.properties file
@@ -117,30 +108,6 @@ POST /api/users
 }
 ```
 
-## Working with Petclinic in Eclipse/STS
-
-### prerequisites
-The following items should be installed in your system:
-* Maven 3 (http://www.sonatype.com/books/mvnref-book/reference/installation.html)
-* git command line tool (https://help.github.com/articles/set-up-git)
-* Eclipse with the m2e plugin (m2e is installed by default when using the STS (http://www.springsource.org/sts) distribution of Eclipse)
-
-Note: when m2e is available, there is an m2 icon in Help -> About dialog.
-If m2e is not there, just follow the install process here: http://eclipse.org/m2e/download/
-
-
-### Steps:
-
-1) In the command line
-```
-git clone https://github.com/spring-petclinic/spring-petclinic-rest.git
-```
-2) Inside Eclipse
-```
-File -> Import -> Maven -> Existing Maven project
-```
-
-
 ## Looking for something in particular?
 
 | Layer | Source |
@@ -159,24 +126,6 @@ This application uses [Google Jib]([https://github.com/GoogleContainerTools/jib)
 into the [Docker Hub](https://cloud.docker.com/u/springcommunity/repository/docker/springcommunity/spring-petclinic-rest/)
 repository.
 The [pom.xml](pom.xml) has been configured to publish the image with a the `springcommunity/spring-petclinic-rest`image name.
-
-## Interesting Spring Petclinic forks
-
-The Spring Petclinic master branch in the main [spring-projects](https://github.com/spring-projects/spring-petclinic)
-GitHub org is the "canonical" implementation, currently based on Spring Boot and Thymeleaf.
-
-This [spring-petclinic-rest](https://github.com/spring-petclinic/spring-petclinic-rest/) project is one of the [several forks](https://spring-petclinic.github.io/docs/forks.html) 
-hosted in a special GitHub org: [spring-petclinic](https://github.com/spring-petclinic).
-If you have a special interest in a different technology stack
-that could be used to implement the Pet Clinic then please join the community there.
-
-
-# Contributing
-
-The [issue tracker](https://github.com/spring-petclinic/spring-petclinic-rest/issues) is the preferred channel for bug reports, features requests and submitting pull requests.
-
-For pull requests, editor preferences are available in the [editor config](https://github.com/spring-petclinic/spring-petclinic-rest/blob/master/.editorconfig) for easy use in common text editors. Read more and download plugins at <http://editorconfig.org>.
-
 
 
 
